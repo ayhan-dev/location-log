@@ -1,41 +1,42 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
- <title>- title web- </title> 
-</head> 
-<body> 
- 
- <h1>hi</h1> 
- <p>text</p> 
- <button onclick="getLocation()">Get</button> 
- <script> 
-  function getLocation() { 
-   if (navigator.geolocation) { 
-    navigator.geolocation.getCurrentPosition(showPosition); 
-   } else { 
-    alert("Geolocation is not supported by this browser."); 
-   } 
-  } 
 
-  function saveToFile(data) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "save.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        alert("Data saved successfully!");
-      }
-    };
-    xhr.send("data=" + encodeURIComponent(data));
+< !DOCTYPE html >
+  <html>
+    <head>
+      <title>- title web- </title>
+    </head>
+    <body>
+
+      <h1>hi</h1>
+      <p>text</p>
+      <button onclick="getLocation()">Get</button>
+      <script>
+        function getLocation() { 
+   if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition); 
+   } else {
+          alert("Geolocation is not supported by this browser."); 
+   } 
   }
 
-  function showPosition(position) { 
-   var latitude = position.coords.latitude; 
-   var longitude = position.coords.longitude; 
-   var data = "Latitude: " + latitude + ", Longitude: " + longitude;
-   saveToFile(data);
-   alert("loading...."); 
-  } 
- </script> 
-</body> 
-</html>
+        function saveToFile(data) {
+    var xhr = new XMLHttpRequest();
+        xhr.open("POST", "save.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+          alert("Data saved successfully!");
+      }
+    };
+        xhr.send("data=" + encodeURIComponent(data));
+  }
+
+        function showPosition(position) { 
+   var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var data = "Latitude: " + latitude + ", Longitude: " + longitude;
+        saveToFile(data);
+        alert("loading...."); 
+  }
+      </script>
+    </body>
+  </html>
